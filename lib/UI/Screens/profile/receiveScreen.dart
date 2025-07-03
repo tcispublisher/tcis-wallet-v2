@@ -15,7 +15,7 @@ class ReceiveScreen extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          'Bitget Wallet',
+          'TCIS Wallet',
           style: TextStyle(color: Colors.white, fontSize: 18),
         ),
       ),
@@ -101,7 +101,7 @@ class ReceiveScreen extends StatelessWidget {
                       ),
                       const SizedBox(width: 8),
                       const Text(
-                        'Deposit from Bitget Exchange',
+                        'Deposit from TCIS Wallet Exchange',
                         style: TextStyle(color: Colors.white, fontSize: 14),
                       ),
                     ],

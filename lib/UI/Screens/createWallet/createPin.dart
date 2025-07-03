@@ -172,8 +172,8 @@ class _CreatePinScreenState extends State<CreatePinScreen> {
                   text: TextSpan(
                     children: [
                       TextSpan(
-                        text: getTranslated(context, "Your PIN is used to verify your identity. Bitget Wallet does not store your PIN for you, so please keep it safe. ") ??
-                            "Your PIN is used to verify your identity. Bitget Wallet does not store your PIN for you, so please keep it safe. ",
+                        text: getTranslated(context, "Your PIN is used to verify your identity. TCIS Wallet does not store your PIN for you, so please keep it safe. ") ??
+                            "Your PIN is used to verify your identity. TCIS Wallet does not store your PIN for you, so please keep it safe. ",
                         style: const TextStyle(
                           color: Colors.grey,
                           fontSize: 12,
