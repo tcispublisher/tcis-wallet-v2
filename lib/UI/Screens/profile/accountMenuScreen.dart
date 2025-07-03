@@ -7,6 +7,7 @@ import 'package:crypto_wallet/UI/Screens/profile/editProfile.dart';
 
 import '../../../controllers/appController.dart';
 import '../../../localization/language_constants.dart';
+import '../../../services/apiService.dart';
 import '../onBoardingScreens/onboardingScreen1.dart';
 import '../referralsScreen/referralScreen.dart';
 
@@ -32,21 +33,41 @@ class _AccountMenuScreenState extends State<AccountMenuScreen> {
   bool isSnackbarVisible = false;
 
   Future<void> _handleGainRewardComing() async {
+    dynamic result = await ApiService.claimReward(widget.walletAddress);
+
     if (!Get.isSnackbarOpen && !isSnackbarVisible) {
       isSnackbarVisible = true;
+
+      Color textColor;
+      String title;
+      String message = result?.toString() ?? 'Unknown error';
+
+      if (message.contains("successful.")) {
+        textColor = Colors.tealAccent;
+        title = "Successful";
+      } else if (message.contains("There is no reward amount to gain")) {
+        textColor = Colors.yellow;
+        title = "Warning";
+      } else {
+        textColor = Colors.redAccent;
+        title = "Error";
+      }
+
       Get.snackbar(
-        "This feature will be available soon.",
-        "TCIS Team",
-        backgroundColor: Colors.greenAccent,
-        colorText: Colors.white,
+        title,
+        message,
+        backgroundColor: Colors.grey.shade100,
+        colorText: textColor,
         margin: const EdgeInsets.only(top: 20, left: 16, right: 16),
         duration: const Duration(seconds: 2),
       );
+
       Future.delayed(const Duration(seconds: 1), () {
         isSnackbarVisible = false;
         isLoading = false;
       });
     }
+
   }
 
   String formatTotalBalance(double value) {
@@ -163,7 +184,7 @@ class _AccountMenuScreenState extends State<AccountMenuScreen> {
 
           InkWell(
             onTap: _handleGainRewardComing,
-            child: _buildMenuItem('Gain Rewards', '>'),
+            child: _buildMenuItem('Claim Rewards', '>'),
           ),
 
           InkWell(

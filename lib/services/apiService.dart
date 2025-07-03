@@ -599,6 +599,24 @@ class ApiService {
     }
   }
 
+  static Future<dynamic> claimReward(String walletAddress) async {
+    var request = http.Request('GET', Uri.parse('${base_url}/auth/gain-reward/${walletAddress}'));
+
+    try {
+      http.StreamedResponse response = await request.send();
+
+      if (response.statusCode == 200) {
+        String responseBody = await response.stream.bytesToString();
+
+        return responseBody; // Trả về chuỗi như: "BNB balance is insufficient for this gain reward order.."
+      } else {
+        return null;
+      }
+    } catch (e) {
+      return null;
+    }
+  }
+
   static Future<dynamic> claimRewards(String walletAddress) async {
     var request = http.Request('GET', Uri.parse('${base_url}/auth/claim-reward/${walletAddress}'));
 
