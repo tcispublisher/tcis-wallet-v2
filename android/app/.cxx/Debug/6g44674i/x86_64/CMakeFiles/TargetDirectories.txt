@@ -1,0 +1,2 @@
+/Users/nguyenhaitran/Desktop/tcis-wallet-v2/android/app/.cxx/Debug/6g44674i/x86_64/CMakeFiles/rebuild_cache.dir
+/Users/nguyenhaitran/Desktop/tcis-wallet-v2/android/app/.cxx/Debug/6g44674i/x86_64/CMakeFiles/edit_cache.dir
